@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import ru.geekbrains.erpsystem.entities.Role;
 import ru.geekbrains.erpsystem.entities.User;
 
 import java.io.Serializable;
@@ -35,4 +36,15 @@ public class UserData implements Serializable {
 
         return newUser;
     }
+
+    public User getEntity() {
+        Role role = this.getRoleData().getRoleEntity();
+        User user = new User();
+        user.setId(this.getId());
+        user.setName(this.getName());
+        user.setRole(role);
+        user.setPassword(this.getPassword());
+        return user;
+    }
+
 }
