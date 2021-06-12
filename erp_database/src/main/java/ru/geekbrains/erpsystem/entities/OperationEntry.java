@@ -3,6 +3,7 @@ package ru.geekbrains.erpsystem.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "operation_entries")
@@ -13,6 +14,10 @@ public class OperationEntry {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "workcell_id")
+    private Workcell workcell;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "operation_id", nullable = false)
@@ -33,5 +38,8 @@ public class OperationEntry {
 
     @Column(name = "qty")
     Integer qty;
+
+    @Column(name = "start_date_time")
+    private LocalDateTime startDateTime;
 
 }

@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.erpsystem.data.UserData;
-import ru.geekbrains.erpsystem.entities.Role;
 import ru.geekbrains.erpsystem.entities.User;
 import ru.geekbrains.erpsystem.repositories.RoleRepository;
 import ru.geekbrains.erpsystem.repositories.UserRepository;
@@ -35,7 +34,7 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User with id - "+userData.getId() + "is not empty");
         }
 
-        User user = dataToEntity(userData);
+        User user = userData.getEntity();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return new UserData( userRepository.save(user) );
@@ -48,7 +47,7 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User with id - "+userData.getId() + "is empty");
         }
 
-        User user  = dataToEntity(userData);
+        User user  = userData.getEntity();
         user.setPassword(existingUser.getPassword());
 
         return new UserData( userRepository.save(user) );
@@ -72,20 +71,6 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    private User dataToEntity(UserData userData){
-
-        Role role = roleRepository.findById(userData.getRoleData().getId())
-                .orElseThrow( ()->new RuntimeException("Role id is not found"));
-
-        User user = new User();
-        user.setId(userData.getId());
-        user.setName(userData.getName());
-        user.setRole(role);
-        user.setPassword(userData.getPassword());
-
-        return user;
-    }
-
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         User user = userRepository.findByName(name).orElse(null);
@@ -99,4 +84,8 @@ public class UserServiceImpl implements UserService {
         );
     }
 
+    @Override
+    public Optional<UserData> getByName(String name) {
+        return userRepository.findByName(name).map(UserData::new);
+    }
 }

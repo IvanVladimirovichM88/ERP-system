@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="asmisloff (generated)" id="1623232108932-2">
+        <addColumn tableName="operation_entries">
+            <column name="start_date_time" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="asmisloff (generated)" id="1623232108932-3">
+        <addColumn tableName="operation_entries">
+            <column name="workcell_id" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="asmisloff (generated)" id="1623232108932-4">
+        <addForeignKeyConstraint baseColumnNames="workcell_id" baseTableName="operation_entries" constraintName="FKifofsvr37pujbldjf5brn2s9n" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="workcells" validate="true"/>
+    </changeSet>
+    <changeSet author="asmisloff (generated)" id="1623232108932-5">
+        <dropForeignKeyConstraint baseTableName="agenda" constraintName="FK97aqb4qhff2a3pcpiay9dc6na"/>
+    </changeSet>
+    <changeSet author="asmisloff (generated)" id="1623232108932-6">
+        <dropForeignKeyConstraint baseTableName="agenda" constraintName="FKqyhhtv24dlvr3e0qsdgc7pgpk"/>
+    </changeSet>
+    <changeSet author="asmisloff (generated)" id="1623232108932-7">
+        <dropTable tableName="agenda"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,128 @@
+body {
+    background-color: #ecf0f4;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+#sortable {
+    display: table-cell;
+    padding: 5px;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+}
+
+#sortable .op-entry-widget {
+    background-color: #ebecf0;
+    padding: 5px 5px 5px 5px;
+    margin: 5px;
+    height: 300px;
+    width: 300px;
+    cursor: move;
+    border: solid 1px black;
+    border-radius: 5px;
+    position: relative;
+    float: left;
+    /* overflow-y: auto; */
+}
+
+.op-entry-widget input,
+.op-entry-widget select {
+    width: 100%;
+    border: 1px solid #ced4da;
+    /* border-radius: 5px; */
+    border-color: #d4d4d4;
+}
+
+.qty-input {
+    max-width: 204px;
+    height: 20px;
+}
+
+.tech-row {
+    padding: 1px 0 1px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.tech-column {
+    flex: auto;
+}
+
+.number-container {
+    /* margin-bottom: 2px; */
+    font-weight: 600;
+    color: #1b00ff;
+}
+
+.button-add {
+    margin-left: 10px;
+}
+
+.op-entry-description {
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+.op-param-widget .op-param-tag-input {
+    margin-right: 1px;
+}
+
+.op-param-widget .op-param-value-input {
+    margin-left: 1px;
+    margin-right: 3px;
+}
+
+.op-param-container {
+    overflow-y: scroll;
+    height: 165px;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.op-param-container ::placeholder {
+    font-size: 10px;
+    font-style: italic;
+    text-align: center;
+    color: #1b00ff;
+    opacity: 30%;
+}
+
+.delete-operation-icon {
+    cursor: pointer;
+}
+
+
+/* width */
+
+
+/* ::-webkit-scrollbar {
+    width: 5px;
+} */
+
+
+/* Track */
+
+
+/* 
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+} */
+
+
+/* Handle */
+
+
+/* 
+ ::-webkit-scrollbar-thumb {
+    background: black;
+} */
+
+
+/* Handle on hover */
+
+
+/* ::-webkit-scrollbar-thumb:hover {
+    background: black;
+} */
