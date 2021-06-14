@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8"/>
+    <title>ERP System</title>
+
+    <th:block th:replace="fragments/navigation :: head/link"/>
+    <th:block th:replace="fragments/technology_fragment :: head/link"/>
+
+</head>
+<body>
+
+
+<div th:replace="fragments/navigation :: header"/>
+<div th:replace="fragments/navigation :: left_menu"/>
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+
+            <!-- Default Basic Forms Start -->
+            <div class="pd-20 card-box mb-30" id="effect">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4" th:text="'Технология #' + ${technologyId}"></h4>
+                    </div>
+                </div>
+
+                <div th:replace="fragments/technology_fragment :: technology_form"></div>
+
+            </div>
+            <!-- Default Basic Forms End -->
+        </div>
+    </div>
+</div>
+
+<!-- js -->
+
+<th:block th:replace="fragments/navigation :: body/script"/>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<th:block th:replace="fragments/technology_fragment :: body/script"/>
+
+<script>
+
+    const t = new Technology();
+    let technologyId = "[[${technologyId}]]";
+
+    OpEntry.init().then((p) => {
+        if (!technologyId.isBlank()) {
+            t.get([[${technologyId}]]);
+        }
+    });
+
+</script>
+
+</body>
+</html>

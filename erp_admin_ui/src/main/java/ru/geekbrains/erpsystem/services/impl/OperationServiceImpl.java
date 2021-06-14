@@ -69,4 +69,10 @@ public class OperationServiceImpl implements OperationService {
 
         return operation;
     }
+
+    @Override
+    public Optional<Operation> getByName(String opName) {
+        return operationRepository.findByName(opName);
+    }
+
 }

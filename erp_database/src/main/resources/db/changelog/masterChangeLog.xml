@@ -24,4 +24,9 @@
         <rollback/>
     </changeSet>
     
+    <changeSet id="2.0" author="asmisloff">
+        <tagDatabase tag="v2"></tagDatabase>
+    </changeSet>
+    <include file="02/02.xml" relativeToChangelogFile="true"></include>
+    
 </databaseChangeLog>

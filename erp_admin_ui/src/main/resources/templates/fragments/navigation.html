@@ -41,14 +41,14 @@
                 </div>
             </div>
 
-            <div class="user-notification">
-                <div class="dropdown">
-                    <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-                        <i class="icon-copy dw dw-notification"></i>
-                        <span class="badge notification-active"></span>
-                    </a>
-                </div>
-            </div>
+<!--            <div class="user-notification">-->
+<!--                <div class="dropdown">-->
+<!--                    <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">-->
+<!--                        <i class="icon-copy dw dw-notification"></i>-->
+<!--                        <span class="badge notification-active"></span>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="github-link">
                 <a href="https://github.com/asmisloff/ERP-system" target="_blank"><img th:src="@{/vendors/images/github.svg}" alt=""></a>
             </div>
@@ -59,11 +59,9 @@
 
 <div th:fragment="left_menu">
     <div  class="left-side-bar">
-        <div class="brand-logo">
-            <a th:href="@{/dashboard}">
-                <img th:src="@{/vendors/images/deskapp-logo.svg}" alt="" class="dark-logo">
-                <img th:src="@{/vendors/images/deskapp-logo-white.svg}" alt="" class="light-logo">
-            </a>
+        <div class="brand-logo" style="margin: 20px 0 0 5px; color: white;">
+                <img th:src="@{/custom/img/wrench.png}" alt="" class="dark-logo" style="height: 70%;">
+                ERP System
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                 <i class="ion-close-round"></i>
             </div>
@@ -74,7 +72,7 @@
 
                     <li>
                         <a th:href="@{/users/all}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-deer"></span>
+                            <span class="micon dw dw-user"></span>
                             <span class="mtext">Users</span>
                         </a>
                     </li>
@@ -87,15 +85,22 @@
                     </li>
 
                     <li>
-                        <a th:href="@{/operations/all}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-key2"></span>
-                            <span class="mtext">Operations</span>
+                        <a th:href="@{/workcells/all}" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-hook"></span>
+                            <span class="mtext">Workcells</span>
                         </a>
                     </li>
 
                     <li>
+                        <a th:href="@{/operations/all}" class="dropdown-toggle no-arrow">
+                            <span class="micon fi-wrench"></span>
+                            <span class="mtext">Operations</span>
+                        </a>
+                    </li>
+
+                    <li style="margin-bottom: 20px;">
                         <a th:href="@{/materials/all}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-key2"></span>
+                            <span class="micon dw dw-trolley"></span>
                             <span class="mtext">Materials</span>
                         </a>
                     </li>
@@ -108,9 +113,9 @@
                     </li>
 
                     <li>
-                        <a th:href="@{/materials/all}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-key2"></span>
-                            <span class="mtext">Materials</span>
+                        <a th:href="@{/technologies/all}" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-flow"></span>
+                            <span class="mtext">Technologies</span>
                         </a>
                     </li>
 

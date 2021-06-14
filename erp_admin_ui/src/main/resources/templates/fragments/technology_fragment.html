@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>ERP System</title>
+
+    <link rel="stylesheet" th:href="@{/custom/styles/technology.css}">
+
+</head>
+
+<body>
+
+<div th:fragment="technology_form">
+
+    <div id="sortable" technology-id="" th:attr="technologist-id=${technologistId}">
+
+    </div>
+
+    <div style="position: relative;">
+        <button class="button-add btn btn-primary" onclick="OpEntry.insertNewWidget()">Добавить операцию</button>
+        <button id="button-save" type="submit" class="btn" data-bgcolor="#00b489" data-color="#ffffff"
+                style="color: rgb(255, 255, 255); background-color: rgb(0, 180, 137); position: absolute; right: 20px;"
+                onclick="t.post();">
+            <i class="icon-copy ion-checkmark"></i>
+            Сохранить
+        </button>
+    </div>
+
+    <div id="op-entry-prototype" class="ui-state-default op-entry-widget"
+         onmouseup="setTimeout(OpEntry.updateNumbers, 40)" ondrop="alert();" style="display: none;">
+        <div class="tech-row" style="margin-bottom: 5px;">
+            <span class="number-container tech-column" style="flex:95%"></span>
+            <i class="tech-column icon-copy fa fa-times delete-operation-icon" aria-hidden="true"
+               style="flex: 5%; color: red;" onclick="OpEntry.deleteWidget(this)"></i>
+        </div>
+        <div class="tech-row">
+            <div class="tech-column" style="flex:30%">
+                <label>Участок: </label>
+            </div>
+            <div class="tech-column" style="text-align: right; flex:70%">
+                <select class="workcell-select"></select>
+                </select>
+            </div>
+        </div>
+        <div class="tech-row">
+            <div class="tech-column" style="flex:30%">
+                <label> Операция: </label>
+            </div>
+            <div class="tech-column" style="text-align: right; flex:70%">
+                <select class="op-select">
+
+                </select>
+            </div>
+        </div>
+        <div class="tech-row">
+            <div class="tech-column" style="flex:30%">
+                <label> Количество: </label>
+            </div>
+            <div class="tech-column" style="text-align: right; flex:70%">
+                <input class="qty-input" type="number" min="1" value="1"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="tech-row op-param-widget" id="op-param-prototype" style="display: none;">
+        <input class="op-param-tag-input tech-column" type="text" placeholder="Наименование параметра"
+               style="flex:60%"/>
+        <input class="op-param-value-input tech-column" type="text" placeholder="Значение параметра" style="flex:40%"/>
+    </div>
+
+    <div id="op-param-container-prototype" class="op-param-container" style="display: none;">
+
+    </div>
+
+</div>
+
+
+<!-- js -->
+<script>
+    var applicationUrl = "[[${applicationUrl}]]";
+
+</script>
+<script th:src="@{/custom/scripts/technology.js}"></script>
+
+</body>
+</html>

@@ -48,7 +48,7 @@
                         <label class="col-sm-12 col-md-2 col-form-label">Role </label>
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
-                                <label>Single Select</label>
+<!--                                <label>Single Select</label>-->
                                 <select id="user_role" th:field="*{roleData.id}"  class="selectpicker form-control" data-style="btn-outline-primary" data-size="5">
                                     <option  th:each="selectRole : ${allRoles}"
                                              th:value="${selectRole.id}"
@@ -69,9 +69,6 @@
             </div>
             <!-- Default Basic Forms End -->
 
-        </div>
-        <div class="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
         </div>
     </div>
 </div>

@@ -29,15 +29,20 @@
                     </div>
                 </div>
 
-                <form th:action="@{/roles/add}" th:object="${roleData}" method="post">
+                <form th:action="@{/workcells/add}" th:object="${workcellData}" method="post">
 
                     <div class="form-group row">
 
                         <input th:field = "*{id}" class="form-control" type="number" hidden="hidden">
 
-                        <label class="col-sm-12 col-md-2 col-form-label">Role name</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Workcell name</label>
                         <div class="col-sm-12 col-md-10">
-                            <input th:field = "*{name}" class="form-control" type="text" placeholder="Input Role name">
+                            <input th:field = "*{name}" class="form-control" type="text" placeholder="Input workcell name">
+                        </div>
+
+                        <label class="col-sm-12 col-md-2 col-form-label">Workcell description</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input th:field = "*{description}" class="form-control" type="text" placeholder="Input workcell description">
                         </div>
                     </div>
 
@@ -52,6 +57,7 @@
             <!-- Default Basic Forms End -->
 
         </div>
+
     </div>
 </div>
 

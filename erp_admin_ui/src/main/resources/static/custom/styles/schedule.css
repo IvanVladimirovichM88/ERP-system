@@ -1,0 +1,30 @@
+.form-control.workcell-input {
+    background-color: aliceblue;
+}
+
+table {
+    min-width: 100%;
+}
+
+th {
+    font-size: 13px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+#button-save {
+    display: block;
+    color: #ffffff;
+    background-color: #00b489;
+    position: absolute;
+    right: 60px;
+}
+
+#chatr-div {
+    width: 100%;
+}
+
+.ui-tooltip {
+    border-radius: 5px;
+    font: bold 10px "Helvetica Neue", Sans-Serif;
+}
