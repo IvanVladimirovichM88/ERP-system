@@ -43,7 +43,7 @@ public class MaterialController {
     ){
         model.addAttribute("form_name", "New Material");
         model.addAttribute("materialData", new MaterialData());
-        return "forms/Material_form";
+        return "forms/material_form";
     }
 
     @PostMapping("/add")

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8"/>
+    <title>ERP System</title>
+
+    <th:block th:replace="fragments/navigation :: head/link"/>
+
+
+</head>
+<body>
+
+
+<div th:replace="fragments/navigation :: header"/>
+<div th:replace="fragments/navigation :: left_menu"/>
+
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+
+            <!-- Default Basic Forms Start -->
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4" th:text = "${form_name}"></h4>
+                    </div>
+                </div>
+
+                <form th:action="@{/workcells/add}" th:object="${workcellData}" method="post">
+
+                    <div class="form-group row">
+
+                        <input th:field = "*{id}" class="form-control" type="number" hidden="hidden">
+
+                        <label class="col-sm-12 col-md-2 col-form-label">Workcell name</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input th:field = "*{name}" class="form-control" type="text" placeholder="Input workcell name">
+                        </div>
+
+                        <label class="col-sm-12 col-md-2 col-form-label">Workcell description</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input th:field = "*{description}" class="form-control" type="text" placeholder="Input workcell description">
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn" data-bgcolor="#00b489" data-color="#ffffff">
+                            <i class="icon-copy ion-checkmark"></i>
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- Default Basic Forms End -->
+
+        </div>
+
+    </div>
+</div>
+
+<!-- js -->
+<th:block th:replace="fragments/navigation :: body/script"/>
+
+</body>
+</html>

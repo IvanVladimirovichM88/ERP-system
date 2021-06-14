@@ -3,6 +3,7 @@ package ru.geekbrains.erpsystem.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,6 @@ public class Technology {
     private User technologist;
 
     @OneToMany(mappedBy = "technology")
-    List<OperationEntry> operationEntries;
+    List<OperationEntry> operationEntries = new ArrayList<>();
 
 }
