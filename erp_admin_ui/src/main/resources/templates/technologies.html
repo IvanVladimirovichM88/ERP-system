@@ -25,7 +25,7 @@
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix mb-20">
                     <div class="pull-left">
-                        <h4 class="text-blue h4">USERS ROLES</h4>
+                        <h4 class="text-blue h4">Technologies</h4>
                     </div>
                 </div>
 
@@ -33,22 +33,21 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr id = "role_line" th:each="role : ${roles}">
-                        <td id="role_id" th:text="${role.id}"/>
-                        <td id="role_name" th:text="${role.name}"/>
+                    <tr id = "t_line" th:each="t : ${technologies}">
+                        <td id="t_id" th:text="${t.id}"/>
                         <td>
                             <div class="dropdown">
                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                     <i class="dw dw-more"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                    <a class="dropdown-item" th:href="@{'/roles/edit/'+${role.id}}"><i class="dw dw-edit2"></i> Edit</a>
-                                    <a class="dropdown-item" th:href="@{'/roles/delete/'+${role.id}}"><i class="dw dw-delete-3"></i> Delete</a>
+                                    <a class="dropdown-item" th:href="@{'/technologies/edit/'+${t.id}}"><i class="dw dw-edit2"></i> Edit</a>
+                                    <a class="dropdown-item" th:href="@{'/technologies/schedule/'+${t.id}}"><i class="icon-copy dw dw-calendar-5"></i> Schedule </a>
+                                    <a class="dropdown-item" th:href="@{'/technologies/delete/'+${t.id}}"><i class="dw dw-delete-3"></i> Delete</a>
                                 </div>
                             </div>
                         </td>
@@ -57,12 +56,13 @@
                 </table>
 
                 <div>
-                    <a th:href="@{/roles/add}" class="btn btn-primary"> <i class="icon-copy fi-plus"></i> Add new Role</a>
+                    <a th:href="@{/technologies/add}" class="btn btn-primary"> <i class="icon-copy fi-plus"></i> Add new Technology </a>
                 </div>
             </div>
             <!-- Bordered table End -->
 
         </div>
+
     </div>
 </div>
 

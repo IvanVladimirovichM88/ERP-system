@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>ERP System</title>
+    <th:block th:replace="fragments/navigation :: head/link" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" th:href="@{/custom/styles/schedule.css}">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body>
+    <div th:replace="fragments/navigation :: header" />
+    <div th:replace="fragments/navigation :: left_menu" />
+
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px" id="effect">
+
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix mb-20">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4" th:text="'Schedule technology #' + ${technology.id}"></h4>
+                        </div>
+                    </div>
+
+                    <!-- technology data -->
+                    <table id="technology_container">
+                        <tr>
+                            <th>Производственный участок</th>
+                            <th>Технологическая операция</th>
+<!--                            <th>Параметры операции</th>-->
+                            <th>Кол.</th>
+                            <th>Норма времени, ч</th>
+                            <th>Плановый старт работ</th>
+                            <th>Плановое завершение работ</th>
+                        </tr>
+                        <tr class="op-entry" th:each="opEntry : ${technology.opEntries}">
+                            <td style="width: 20%;">
+                                <input class="form-control workcell-input" th:value="${opEntry.workcell}" readonly/>
+                            </td>
+                            <td style="width: 30%;">
+                                <input class="form-control operation-input" th:value="${opEntry.opName}" readonly/>
+                            </td>
+<!--                            <td style="width: 20%;">-->
+<!--                                <input class="form-control params-input" th:value="${opEntry.params}" readonly/>-->
+<!--                            </td>-->
+                            <td style="width: 10%;">
+                                <input class="form-control qty-input" th:value="${opEntry.qty}" readonly/>
+                            </td>
+                            <td style="width: 10%; ">
+                                <input type='number' min='1' class="form-control duration-input " th:value="${opEntry.duration}" readonly />
+                            </td>
+                            <td style="width: 15%; ">
+                                <input type='datetime-local' class="form-control start-datetime-input " th:value="${opEntry.startDateTime} " />
+                            </td>
+                            <td style="width: 15%; ">
+                                <input type='datetime-local' class="form-control finish-datetime-input " th:value="${opEntry.finishDateTime} " />
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="height: 40px; padding: 10px 0 10px 0; ">
+                        <button id='button-save' type="submit" class='btn'>
+                            <i class="icon-copy ion-checkmark"></i>
+                            Submit
+                        </button>
+                    </div>
+                    <!-- end of technology data -->
+
+                </div>
+
+                <!-- chart -->
+                <div class='pd-20 card-box mb-30'>
+                    <div id='chart-div'> </div>
+                </div>
+                <!-- end of chart -->
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- js -->
+    <th:block th:replace="fragments/navigation :: body/script " />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js "></script>
+
+    <script>
+        const technologyId = '[[${technology.id}]]';
+        const applicationUrl = '[[${applicationUrl}]]';
+    </script>
+    <script th:src="@{/custom/scripts/schedule.js} "></script>
+
+</body>
+
+</html>

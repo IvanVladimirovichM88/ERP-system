@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import ru.geekbrains.erpsystem.entities.Operation;
+import ru.geekbrains.erpsystem.entities.Workcell;
 
 import java.io.Serializable;
 
@@ -23,4 +24,13 @@ public class OperationData implements Serializable {
         this.name = operation.getName();
         this.description = operation.getDescription();
     }
+
+    public Operation getEntity() {
+        Operation operation = new Operation();
+        operation.setId(this.id);
+        operation.setName(this.name);
+        operation.setDescription(this.description);
+        return operation;
+    }
+
 }
