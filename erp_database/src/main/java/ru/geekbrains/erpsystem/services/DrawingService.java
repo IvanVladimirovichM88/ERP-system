@@ -20,7 +20,7 @@ public class DrawingService {
     @Autowired
     DrawingThumbnailRepository drawingThumbnailRepository;
 
-    public void saveDrawing(String path, List<String> thumbPaths) {
+    public Drawing saveDrawing(String path, List<String> thumbPaths) {
         Drawing drawing = new Drawing();
         drawing.setPath(path);
         drawing.setUnit(null);
@@ -34,8 +34,10 @@ public class DrawingService {
                 })
                 .collect(Collectors.toList());
 
-        drawingRepository.save(drawing);
+
         drawingThumbnailRepository.saveAll(thumbs);
+
+        return drawingRepository.save(drawing);
     }
 
     public Drawing deleteDrawingAndThumbnails(Long drawingId) throws NotFoundException {

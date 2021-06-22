@@ -21,7 +21,7 @@ public class Drawing {
     @Column(name = "path")
     private String path;
 
-    @OneToMany(mappedBy = "drawing", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "drawing", cascade = {CascadeType.REMOVE , CascadeType.REFRESH, CascadeType.PERSIST })
     List<DrawingThumbnail> thumbnails;
 
     @OneToOne(mappedBy = "drawing")

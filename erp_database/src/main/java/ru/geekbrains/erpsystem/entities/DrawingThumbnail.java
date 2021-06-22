@@ -17,7 +17,7 @@ public class DrawingThumbnail {
     @Column(name = "path")
     private String path;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REMOVE , CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinColumn(name = "drawing_id")
     Drawing drawing;
 

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8"/>
+    <title>ERP System</title>
+
+    <th:block th:replace="fragments/navigation :: head/link"/>
+
+
+</head>
+<body>
+
+
+<div th:replace="fragments/navigation :: header"/>
+<div th:replace="fragments/navigation :: left_menu"/>
+
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <!-- Default Basic Forms Start -->
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4" th:text = "${form_name}"></h4>
+                    </div>
+                </div>
+
+                <form th:action="@{/units/add}" enctype="multipart/form-data" th:object="${unitData}" method="post">
+                    <div class="form-group">
+                        <label>Input Art</label>
+                        <input class="form-control" th:field="*{art}" type="text" placeholder="Art">
+                    </div>
+                    <div class="form-group">
+                        <label>Input Name</label>
+                        <input class="form-control"  th:field="*{name}"  type="text" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Constructor</label>
+                        <input class="form-control" id="userName" type="text" th:value="${userName}" readonly="">
+                    </div>
+                    <div class="form-group">
+                        <label>Select Material</label>
+                        <select multiple data-max-options="1"
+                                th:field="*{materialData.id}"
+                                class="show-tick form-control" size="5" >
+                            <option
+                                    th:each="selectMaterial : ${allMaterials}"
+                                    th:value="${selectMaterial.id}"
+                                    th:text="${selectMaterial.name}"/>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Units</label>
+                        <select multiple
+                                th:field="*{includedUnitId}"
+                                class="show-tick form-control" size="5"  >
+                            <option
+                                    th:each="selectUnit : ${allUnits}"
+                                    th:value="${selectUnit.id}"
+                                    th:text="${selectUnit.art} + ${selectUnit.name}"/>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label> Загрузить чертеж </label>
+                        <input type="file" name="file" class="form-control-file form-control height-auto" id="file_input"/>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn" data-bgcolor="#00b489" data-color="#ffffff">
+                            <i class="icon-copy ion-checkmark"></i>
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- Default Basic Forms End -->
+
+        </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+        </div>
+    </div>
+</div>
+
+<!-- js -->
+<th:block th:replace="fragments/navigation :: body/script"/>
+
+<script type="text/javascript">
+
+    function getFileName() {
+        var filename = document.getElementById("file_input").value.split("\\").pop().split(".")[0];
+    }
+
+
+
+</script>
+
+</body>
+</html>
